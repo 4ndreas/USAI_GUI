@@ -24,23 +24,29 @@ Actor
 Sensors
 - int, float to value
 
-![lidarsee](images/USAI_GUI_controls.jpg)
+![USAI_GUI_controls](images/USAI_GUI_controls.jpg)
 
 To display time depended values graphs can be selected in the config tab
 
-![lidarsee](images/USAI_GUI_graph.jpg)
-![lidarsee](images/USAI_GUI_Config.jpg)
+![USAI_GUI_graph](images/USAI_GUI_graph.jpg)
+![USAI_GUI_Config](images/USAI_GUI_Config.jpg)
 
 Currently Serial and UDP connections are supported
 - Serial select the Port and baudrate
 - UDP select IP and Port
-![lidarsee](images/USAI_GUI_Connect.jpg)
+![USAI_GUI_Connect](images/USAI_GUI_Connect.jpg)
 
-# To do
-- add crc for serial connection
-- binarry protocoll
-- TCP/IP
+# To do:
+- add CRC for serial connection
+- binarry protocol
+- add TCP
 - save graphs and values
 - Improve MIDI interface
 - ... many more ideas 
 
+
+Credits:
+
+I used Leslie Sanford's C# MIDI Toolkit for the Midi interactions
+from: https://www.codeproject.com/Articles/6228/C-MIDI-Toolkit
+The color selector ist form https://unclassified.software/de/source/colorfader
