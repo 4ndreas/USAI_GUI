@@ -1,6 +1,9 @@
 # USAI_GUI
 GUI for my "Universal Sensor Actor Interface" (USAI) library for Arduino
 
+Downdload the library from: 
+https://github.com/4ndreas/USAI
+
 The library uses a simple ASCII-protocoll to transfer data.
 | Name | : | Value |\r\n|
 
