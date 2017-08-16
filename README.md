@@ -24,17 +24,17 @@ Actor
 Sensors
 - int, float to value
 
-![USAI_GUI_controls](images/USAI_GUI_controls.jpg)
+![USAI_GUI_controls](images/USAI_GUI_controls.JPG)
 
 To display time depended values graphs can be selected in the config tab
 
-![USAI_GUI_graph](images/USAI_GUI_graph.jpg)
-![USAI_GUI_Config](images/USAI_GUI_Config.jpg)
+![USAI_GUI_graph](images/USAI_GUI_graph.JPG)
+![USAI_GUI_Config](images/USAI_GUI_Config.JPG)
 
 Currently Serial and UDP connections are supported
 - Serial select the Port and baudrate
 - UDP select IP and Port
-![USAI_GUI_Connect](images/USAI_GUI_Connect.jpg)
+![USAI_GUI_Connect](images/USAI_GUI_Connect.JPG)
 
 # To do:
 - add CRC for serial connection
