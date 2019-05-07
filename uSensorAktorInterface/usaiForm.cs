@@ -189,6 +189,7 @@ namespace uSensorAktorInterface
             catch(Exception ex)
             {
                 //MessageBox.Show(ex.Message);
+                //toolStripStatusLabelInfo.Text = ex.Message;
             }
         }
 
@@ -223,13 +224,22 @@ namespace uSensorAktorInterface
                                     {
                                     this.Invoke((delAddControl)delegate
                                     {
+                                        up.myU = u;
                                         up.UpdateData();
+                                        //up.Refresh();
                                     });
                                     
                                     }
                                 }
                             break;
                         }
+                    }
+                    foreach(Control cr in flowLayoutPanel1.Controls)
+                    {
+                        this.Invoke((delAddControl)delegate
+                        {
+                            cr.Refresh();
+                        });
                     }
                     if (isNew)
                     {
@@ -401,8 +411,10 @@ namespace uSensorAktorInterface
                     {
                         ((GraphControl)cr).UpdateData();
                     }
+                   
                 }
                 mainGraph.redraw();
+                //toolStripStatusLabelInfo.Text = 
                 globalUpdate = false;
             } 
         }

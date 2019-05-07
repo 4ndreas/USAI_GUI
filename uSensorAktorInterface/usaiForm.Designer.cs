@@ -40,10 +40,13 @@
             this.buttonAddSerial = new System.Windows.Forms.Button();
             this.flowLayoutPanelConnections = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPageControl.SuspendLayout();
             this.tabPageConfig.SuspendLayout();
             this.tabPageConnect.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -58,7 +61,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(868, 551);
+            this.tabControl1.Size = new System.Drawing.Size(868, 538);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPageControl
@@ -67,7 +70,7 @@
             this.tabPageControl.Location = new System.Drawing.Point(4, 22);
             this.tabPageControl.Name = "tabPageControl";
             this.tabPageControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageControl.Size = new System.Drawing.Size(860, 525);
+            this.tabPageControl.Size = new System.Drawing.Size(860, 512);
             this.tabPageControl.TabIndex = 0;
             this.tabPageControl.Text = "Control";
             this.tabPageControl.UseVisualStyleBackColor = true;
@@ -80,7 +83,7 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(848, 513);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(848, 500);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // tabPageGraph
@@ -164,19 +167,38 @@
             this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelInfo});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 553);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(892, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelInfo
+            // 
+            this.toolStripStatusLabelInfo.Name = "toolStripStatusLabelInfo";
+            this.toolStripStatusLabelInfo.Size = new System.Drawing.Size(0, 17);
+            // 
+            // usaiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 575);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "usaiForm";
             this.Text = "Universal Sensor Aktor Interface";
             this.tabControl1.ResumeLayout(false);
             this.tabPageControl.ResumeLayout(false);
             this.tabPageConfig.ResumeLayout(false);
             this.tabPageConnect.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -192,6 +214,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelConnections;
         private System.Windows.Forms.Button buttonAddUdp;
         private System.Windows.Forms.Button buttonAddSerial;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelInfo;
     }
 }
 

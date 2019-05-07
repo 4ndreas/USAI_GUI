@@ -44,6 +44,7 @@ namespace uSensorAktorInterface
         public Color graphColor = Color.Red;
         public bool updateGraphSettings = true;
         public object sender;
+        public string statusMsg = "";
 
         internal dataType DType
         {
@@ -97,7 +98,14 @@ namespace uSensorAktorInterface
             if (sender.GetType() == typeof(SerialPort))
             {
                 SerialPort comport = (SerialPort)sender;
-                comport.Write(sr);
+                try
+                {
+                    comport.Write(sr);
+                }
+                catch(Exception e)
+                {
+                    statusMsg = e.Message;
+                }
             }
             else if (sender.GetType() == typeof(udpConnect))
             {

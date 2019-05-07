@@ -38,9 +38,10 @@ namespace uSensorAktorInterface
                     comport.BaudRate = Convert.ToInt32(textBoxBaud.Text);
                     comport.PortName = comboBoxSerialports.Text;
                     comport.DtrEnable = true;
+                    comport.WriteTimeout = 2000;
                     comport.Open();
                     buttonConnect.Text = "Disconnect";
-                    comport.WriteLine("getAll:");
+                    WriteLine("getAll:");
                 }
             }
             catch (Exception srfail)
@@ -48,12 +49,20 @@ namespace uSensorAktorInterface
                 MessageBox.Show(srfail.Message);
             }
         }
-
+        public string errorMsg = "";
         public void Write(string sr)
         {
             if (comport.IsOpen)
             {
-                comport.Write(sr);
+                try
+                {
+                    comport.Write(sr);
+                    errorMsg = "";
+                }
+                catch (Exception e)
+                {
+                    errorMsg = e.Message;
+                }
             }
         }
 
@@ -75,8 +84,26 @@ namespace uSensorAktorInterface
         {
             if (comport.IsOpen)
             {
-                comport.WriteLine("getAll:");
+                WriteLine("getAll:");
             }
+        }
+
+        private void WriteLine(string sr)
+        {
+            try
+            {
+                comport.WriteLine(sr);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
