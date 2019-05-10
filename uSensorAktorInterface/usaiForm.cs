@@ -108,60 +108,80 @@ namespace uSensorAktorInterface
             return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
+
+        private bool isConnected()
+        {
+            //foreach(Control cr in flowLayoutPanelConnections.Controls)
+            //{
+            //    serialConnect sc = (serialConnect)cr;
+            //    if(sc.connected == true)
+            //    {
+            //        return true;
+            //    }
+            //}
+            return false;
+        }
+
         private void HandleChannelMessageReceived(object sender, ChannelMessageEventArgs e)
         {
-            context.Post(delegate (object dummy)
+            try
             {
-            e.Message.Command.ToString();
-            e.Message.MidiChannel.ToString();
-            e.Message.Data1.ToString();
-            e.Message.Data2.ToString();
-
-            foreach (Control cr in flowLayoutPanel1.Controls)
-            {
-                if (cr is KnobControl)
+                context.Post(delegate (object dummy)
                 {
-                    if (((KnobControl)cr).myU.midiChannel == e.Message.Data1)
-                    {
-                        int target = map(e.Message.Data2, 0, 127, ((KnobControl)cr).myU.minimum, ((KnobControl)cr).myU.maximum);
-                        ((KnobControl)cr).Value = target;
-                    }
-                }
-                else if (cr is ButtonControl)
-                    {
-                        if (((ButtonControl)cr).myU.midiChannel == e.Message.Data1)
-                        {
-                            if(e.Message.Data2 == 0)
-                            {
-                                ((ButtonControl)cr).Bstate = false;
-                            }
-                            else
-                            {
-                                ((ButtonControl)cr).Bstate = true;
-                            }
-                        }
-                    }
-                else if (cr is uColorWheel)
-                    {
-                        if (((uColorWheel)cr).myU.midiChannel == e.Message.Data1)
-                        {
-                            int target = map(e.Message.Data2, 0, 127, 0, 255);
-                            ((uColorWheel)cr).setHue((byte)target);
-                        }
-                        else if (((uColorWheel)cr).myU.midiChannel +1 == e.Message.Data1)
-                        {
-                            int target = map(e.Message.Data2, 0, 127, 0, 255);
-                            ((uColorWheel)cr).setLightness((byte)target);
-                        }
-                        else if (((uColorWheel)cr).myU.midiChannel +2 == e.Message.Data1)
-                        {
-                            int target = map(e.Message.Data2, 0, 127, 0, 255);
-                            ((uColorWheel)cr).setSaturation((byte)target);
-                        }
-                    }
-                }
+                    e.Message.Command.ToString();
+                    e.Message.MidiChannel.ToString();
+                    e.Message.Data1.ToString();
+                    e.Message.Data2.ToString();
 
-            }, null);
+                    foreach (Control cr in flowLayoutPanel1.Controls)
+                    {
+                        if (cr is KnobControl)
+                        {
+                            if (((KnobControl)cr).myU.midiChannel == e.Message.Data1)
+                            {
+                                int target = map(e.Message.Data2, 0, 127, ((KnobControl)cr).myU.minimum, ((KnobControl)cr).myU.maximum);
+                                ((KnobControl)cr).Value = target;
+                            }
+                        }
+                        else if (cr is ButtonControl)
+                        {
+                            if (((ButtonControl)cr).myU.midiChannel == e.Message.Data1)
+                            {
+                                if (e.Message.Data2 == 0)
+                                {
+                                    ((ButtonControl)cr).Bstate = false;
+                                }
+                                else
+                                {
+                                    ((ButtonControl)cr).Bstate = true;
+                                }
+                            }
+                        }
+                        else if (cr is uColorWheel)
+                        {
+                            if (((uColorWheel)cr).myU.midiChannel == e.Message.Data1)
+                            {
+                                int target = map(e.Message.Data2, 0, 127, 0, 255);
+                                ((uColorWheel)cr).setHue((byte)target);
+                            }
+                            else if (((uColorWheel)cr).myU.midiChannel + 1 == e.Message.Data1)
+                            {
+                                int target = map(e.Message.Data2, 0, 127, 0, 255);
+                                ((uColorWheel)cr).setLightness((byte)target);
+                            }
+                            else if (((uColorWheel)cr).myU.midiChannel + 2 == e.Message.Data1)
+                            {
+                                int target = map(e.Message.Data2, 0, 127, 0, 255);
+                                ((uColorWheel)cr).setSaturation((byte)target);
+                            }
+                        }
+                    }
+
+                }, null);
+            }catch(Exception ex)
+            {
+
+            }
         }
 
         //end MIDI
@@ -172,6 +192,7 @@ namespace uSensorAktorInterface
         private delegate void delAddControl();
 
         bool globalUpdate = false;
+
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string rxString;
@@ -334,6 +355,8 @@ namespace uSensorAktorInterface
             kn.myU.setValue(kn.Value);
             kn.myU.sendValue();
         }
+
+
 
         /*
         private void buttonConnect_Click(object sender, EventArgs e)

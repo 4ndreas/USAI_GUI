@@ -23,6 +23,8 @@ namespace uSensorAktorInterface
                 comboBoxSerialports.SelectedIndex = 0;
         }
 
+        public bool connected = false;
+
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             try
@@ -32,6 +34,7 @@ namespace uSensorAktorInterface
                     comport.Close();
                     buttonConnect.Text = "Connect";
                     aktSerialPorts();
+                    connected = true;
                 }
                 else
                 {
@@ -41,11 +44,13 @@ namespace uSensorAktorInterface
                     comport.Open();
                     buttonConnect.Text = "Disconnect";
                     comport.WriteLine("getAll:");
+                    connected = false;
                 }
             }
             catch (Exception srfail)
             {
                 MessageBox.Show(srfail.Message);
+                connected = false;
             }
         }
 
